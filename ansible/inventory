@@ -1,0 +1,4 @@
+[myhosts]
+192.168.33.10 ansible_user=vagrant ansible_ssh_private_key_file=../box1/.vagrant/machines/default/virtualbox/private_key
+[another-host]
+192.168.33.20 ansible_user=vagrant ansible_ssh_private_key_file=../box2/.vagrant/machines/default/virtualbox/private_key
