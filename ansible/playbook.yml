@@ -6,7 +6,8 @@
     - nginx
     - nodejs
   vars:
-    version: "{{node_7_9_version}}"
+    base_url: "{{node_6_repo}}"
+    version: "{{node_6_version}}"
 
 - hosts: another-host
   vars_files:
@@ -14,4 +15,5 @@
   roles:
     - nodejs
   vars:
-    version: "{{node_7_10_version}}"
+    base_url: "{{node_7_repo}}"
+    version: "{{node_7_version}}"

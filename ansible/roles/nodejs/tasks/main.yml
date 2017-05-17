@@ -8,9 +8,9 @@
 - name: Install Node 7.* repo
   become: yes
   yum_repository:
-    name: nodejs
+    name: nodejs-rpm
     description: Node epel yum repo
-    baseurl: https://rpm.nodesource.com/pub_7.x/el/6/x86_64/
+    baseurl: "{{base_url}}"
     gpgcheck: no
 
 - name: Install nodejs

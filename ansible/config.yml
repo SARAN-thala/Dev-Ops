@@ -1,3 +1,5 @@
 ---
-node_7_9_version: 7.9.0
-node_7_10_version: 7.10.0
+node_6_repo: https://rpm.nodesource.com/pub_6.x/el/6/x86_64/
+node_7_repo: https://rpm.nodesource.com/pub_7.x/el/6/x86_64/
+node_6_version: 6.10.3
+node_7_version: 7.10.0
