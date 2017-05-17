@@ -1,5 +1,7 @@
 ---
 - hosts: myhosts
+  vars_files:
+    - config.yml
   tasks:
   # - name: Uninstall nginx
   #   become: yes
@@ -49,7 +51,7 @@
       state: latest
     with_items:
       - nginx
-      - nodejs-6.9.5
+      - "nodejs-{{node_6_version}}"
 
   - name: Copy conf file with change nginx port to 8080
     become: yes
@@ -70,19 +72,9 @@
       status_code: 200
 
 - hosts: another-host
+  vars_files:
+    - config.yml
   tasks:
-  - name: Install Node LTS 7.10.0 repo
-    become: yes
-    yum_repository:
+  - name: include nodejs role
+    include_role:
       name: nodejs
-      description: Node epel yum repo
-      baseurl: https://rpm.nodesource.com/pub_7.x/el/6/x86_64/
-      gpgcheck: no
-
-  - name: Install nodejs
-    become: yes
-    yum:
-      name: "{{item}}"
-      state: latest
-    with_items:
-      - nodejs-7.10.0

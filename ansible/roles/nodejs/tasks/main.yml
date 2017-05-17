@@ -1,0 +1,15 @@
+- name: Install Node 7.10.0 repo
+  become: yes
+  yum_repository:
+    name: nodejs
+    description: Node epel yum repo
+    baseurl: https://rpm.nodesource.com/pub_7.x/el/6/x86_64/
+    gpgcheck: no
+
+- name: Install nodejs
+  become: yes
+  yum:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - "nodejs-7.10.0"
