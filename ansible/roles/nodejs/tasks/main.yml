@@ -1,14 +1,21 @@
 ---
-- name: Uninstall nodejs
+#- name: Uninstall nodejs
+#  become: yes
+#  yum_repository:
+#    name: nodejs-rpm
+#    state: absent
+#  notify: yum-clean-metadata
+
+- name: Uninstall node
   become: yes
   yum:
     name: nodejs
     state: absent
 
-- name: Install Node 7.* repo
+- name: Installing Node repo
   become: yes
   yum_repository:
-    name: nodejs-rpm
+    name: nodejs
     description: Node epel yum repo
     baseurl: "{{node_repo}}"
     gpgcheck: no
