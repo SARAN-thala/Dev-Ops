@@ -16,7 +16,5 @@
 - name: Install nodejs
   become: yes
   yum:
-    name: "{{item}}"
+    name: "nodejs-{{version}}"
     state: latest
-  with_items:
-    - "nodejs-{{version}}"
