@@ -1,4 +1,4 @@
-
+---
 - name: Uninstall nodejs
   become: yes
   yum:
