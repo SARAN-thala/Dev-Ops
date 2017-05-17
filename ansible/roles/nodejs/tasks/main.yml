@@ -1,4 +1,11 @@
-- name: Install Node 7.10.0 repo
+
+- name: Uninstall nodejs
+  become: yes
+  yum:
+    name: nodejs"
+    state: absent
+
+- name: Install Node 7.* repo
   become: yes
   yum_repository:
     name: nodejs
@@ -12,4 +19,5 @@
     name: "{{item}}"
     state: latest
   with_items:
-    - "nodejs-7.10.0"
+    - "nodejs-{{node_7_9_version}}"
+#    - "nodejs-{{node_7-10_version}}"

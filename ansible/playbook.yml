@@ -3,78 +3,57 @@
   vars_files:
     - config.yml
   tasks:
-  # - name: Uninstall nginx
-  #   become: yes
-  #   yum:
-  #     name: nginx
-  #     state: absent
-  #
-  # - name: Uninstall nodejs
-  #   become: yes
-  #   yum:
-  #     name: nodejs
-  #     state: absent
+#  - name: Install Node LTS 6.10.3 repo
+#    become: yes
+#    yum_repository:
+#      name: nodejs
+#      description: Node epel yum repo
+#      baseurl: https://rpm.nodesource.com/pub_6.x/el/6/x86_64/
+#      gpgcheck: no
 
-  # - name: Install nginx
-  #   become: yes
-  #   yum:
-  #     name: nginx
-  #     state: latest
-  #
-  - name: Install Node LTS 6.10.3 repo
-    become: yes
-    yum_repository:
-      name: nodejs
-      description: Node epel yum repo
-      baseurl: https://rpm.nodesource.com/pub_6.x/el/6/x86_64/
-      gpgcheck: no
+#  - name: Uninstall nginx and nodejs
+#    become: yes
+#    yum:
+#      name: "{{item}}"
+#      state: absent
+#    with_items:
+#      - nginx
+#      - nodejs
 
-  # - name: Install Node 6.10.3
-  #   become: yes
-  #   yum:
-  #     name: nodejs
-  #     state: present
+  roles:
+    - nginx
+    - nodejs
+  vars:
+    version: node_7_9_version
+#  - name: Install nginx and nodejs
+#    become: yes
+#    yum:
+#      name: "{{item}}"
+#      state: latest
+#    with_items:
+#      - nginx
+#      - "nodejs-{{node_6_version}}"
+#
+#  - name: Copy conf file with change nginx port to 8080
+#    become: yes
+#    copy:
+#      src: ../app1/overide_nginx.conf
+#      dest: /etc/nginx/conf.d/default.conf
+#
+#  - name: enable nginx service
+#    become: yes
+#    service:
+#      name: nginx
+#      state: restarted
+#      enabled: yes
 
-  - name: Uninstall nginx and nodejs
-    become: yes
-    yum:
-      name: "{{item}}"
-      state: absent
-    with_items:
-      - nginx
-      - nodejs
+#  - name: Hit the nginx server
+#    uri:
+#      url: http://192.168.33.10:9000
+#      status_code: 200
 
-  - name: Install nginx and nodejs
-    become: yes
-    yum:
-      name: "{{item}}"
-      state: latest
-    with_items:
-      - nginx
-      - "nodejs-{{node_6_version}}"
-
-  - name: Copy conf file with change nginx port to 8080
-    become: yes
-    copy:
-      src: ../app1/overide_nginx.conf
-      dest: /etc/nginx/conf.d/default.conf
-
-  - name: enable nginx service
-    become: yes
-    service:
-      name: nginx
-      state: restarted
-      enabled: yes
-
-  - name: Hit the nginx server
-    uri:
-      url: http://192.168.33.10:9000
-      status_code: 200
-
-- hosts: another-host
-  vars_files:
-    - config.yml
-  tasks:
-  - name: include nodejs role
-    include_role:
-      name: nodejs
+#- hosts: another-host
+#  vars_files:
+#    - config.yml
+#  roles:
+#    - nodejs
