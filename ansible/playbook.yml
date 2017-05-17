@@ -1,19 +1,13 @@
 ---
 - hosts: myhosts
   vars_files:
-    - config.yml
+    - web1_config.yml
   roles:
     - nginx
     - nodejs
-  vars:
-    base_url: "{{node_6_repo}}"
-    version: "{{node_6_version}}"
 
 - hosts: another-host
   vars_files:
-    - config.yml
+    - web2_config.yml
   roles:
     - nodejs
-  vars:
-    base_url: "{{node_7_repo}}"
-    version: "{{node_7_version}}"

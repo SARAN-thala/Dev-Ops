@@ -10,11 +10,11 @@
   yum_repository:
     name: nodejs-rpm
     description: Node epel yum repo
-    baseurl: "{{base_url}}"
+    baseurl: "{{node_repo}}"
     gpgcheck: no
 
 - name: Install nodejs
   become: yes
   yum:
-    name: "nodejs-{{version}}"
+    name: "nodejs-{{node_version}}"
     state: latest
