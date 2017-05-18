@@ -6,11 +6,11 @@
 #    state: absent
 #  notify: yum-clean-metadata
 
-- name: Uninstall node
-  become: yes
-  yum:
-    name: nodejs
-    state: absent
+#- name: Uninstall node
+#  become: yes
+#  yum:
+#    name: nodejs
+#    state: absent
 
 - name: Installing Node repo
   become: yes
@@ -24,4 +24,4 @@
   become: yes
   yum:
     name: "nodejs-{{node_version}}"
-    state: latest
+    state: present
