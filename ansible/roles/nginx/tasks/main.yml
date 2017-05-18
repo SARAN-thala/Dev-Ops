@@ -5,7 +5,7 @@
     name: nginx
     state: latest
 
-- name: Copy conf file with change nginx port to 8080
+- name: Copy conf file with change nginx port to 9000
   become: yes
   copy:
     src: ../app1/overide_nginx.conf
