@@ -20,7 +20,7 @@
     baseurl: "{{node_repo}}"
     gpgcheck: no
 
-- name: Install nodejs
+- name: Install nodejs {{node_version}}
   become: yes
   yum:
     name: "nodejs-{{node_version}}"

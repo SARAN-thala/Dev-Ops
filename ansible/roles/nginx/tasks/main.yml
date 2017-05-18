@@ -5,9 +5,9 @@
     name: nginx
     state: latest
 
-- name: Copy conf file with change nginx port to 9000
+- name: Copy conf file with change nginx port to {{nginx_port}}
   become: yes
-  copy:
+  template:
     src: overide_nginx.conf
     dest: /etc/nginx/conf.d/default.conf
 
@@ -20,5 +20,5 @@
 
 - name: Hit the nginx server
   uri:
-    url: http://192.168.33.10:9000
+    url: http://192.168.33.10:{{nginx_port}}
     status_code: 200
