@@ -5,6 +5,9 @@
     name: nginx
     state: present
 
+- set_fact:
+     nginx_config_changed: nginx_config_update_result.changed
+
 - name: Copy conf file with change nginx port to {{nginx_port}}
   become: yes
   template:
@@ -13,7 +16,7 @@
   register: nginx_config_update_result
 
 - debug:
-    msg: "{{nginx_config_update_result}}"
+    var: "{{nginx_config_changed}}"
 
 - name: Restart nginx
   become: yes
@@ -21,4 +24,4 @@
     name: nginx
     state: restarted
     enabled: yes
-  when: nginx_config_update_result.changed
+  when: nginx_config_changed
