@@ -1,4 +1,4 @@
 ---
 node_repo: https://rpm.nodesource.com/pub_6.x/el/6/x86_64/
 node_version: 6.9.5
-nginx_port: 8020
+nginx_port: 8040

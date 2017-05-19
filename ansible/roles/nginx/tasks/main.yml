@@ -19,6 +19,8 @@
     dest: /etc/nginx/conf.d/default.conf
   notify: Restart nginx
 
+#- name: force all notified handlers to run at this point, not waiting for normal sync points
+- meta: flush_handlers
 
 #- name: Starting nginx service
 #  become: yes
